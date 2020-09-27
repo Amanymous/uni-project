@@ -1,12 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views import View
+from rest_framework import viewsets
+from .serializers import BookSerializer
+from .models import Book
+
 # Create your views here.
 
-class Another(View):
 
-    def get(self,request):
-        return HttpResponse('this another')
-
-def first(request):
-    return HttpResponse('my first messge from views')
+class BookViewSet(viewsets.ModelViewSet):
+    serializer_class=BookSerializer
+    queryset=Book.objects.all()

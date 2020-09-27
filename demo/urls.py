@@ -1,8 +1,14 @@
-from django.urls import path
-from . import views
-from .views import Another
+from django.urls import path,include
+from rest_framework import routers
+from .views import BookViewSet
 
+router=routers.DefaultRouter()
+router.register('books',BookViewSet)
 urlpatterns = [
-    path('first',views.first),
-    path('another/', Another.as_view()),
+
+    # path('firstfunction',views.first),
+    #1st path('another',Another.as_view()),#another class
+    # path('first',views.first)
+    path('',include(router.urls))
 ]
+#is ma urls.py/demo ky sary fuction use horhy hain
